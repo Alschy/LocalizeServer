@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <nullable>enable</nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.10.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\common\Alschy.LocalizeServer.Common.Models\Alschy.LocalizeServer.Common.Models.csproj" />
+    <ProjectReference Include="..\..\common\Alschy.LocalizeServer.Common.Services\Alschy.LocalizeServer.Common.Services.csproj" />
+    <ProjectReference Include="..\..\server-core\Alschy.LocalizeServer.Core.Models\Alschy.LocalizeServer.Core.Models.csproj" />
+  </ItemGroup>
+
+</Project>
