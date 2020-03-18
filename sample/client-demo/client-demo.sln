@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizerClient.Demo", "LocalizerClient.Demo\LocalizerClient.Demo.csproj", "{89B44B62-41B3-47BC-A46B-ECC201AA8F53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mongo-demo", "mongo-demo", "{6CFBAE7E-A496-4570-A6AC-CCFD44EB3538}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web-client", "web-client", "{8E4CCBA5-3DFF-447B-A540-1B79824585C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDemo.Web", "..\MongoDemo\MongoDemo.Web\MongoDemo.Web.csproj", "{E81DFACE-2B95-4867-81C0-C3E5A0B568A7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alschy.LocalizeServer.WebClient", "..\..\src\web-client\Alschy.LocalizeServer.WebClient\Alschy.LocalizeServer.WebClient.csproj", "{FD3B740F-7BCB-4BC6-9376-A9AB95EB288D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89B44B62-41B3-47BC-A46B-ECC201AA8F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B44B62-41B3-47BC-A46B-ECC201AA8F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B44B62-41B3-47BC-A46B-ECC201AA8F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B44B62-41B3-47BC-A46B-ECC201AA8F53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E81DFACE-2B95-4867-81C0-C3E5A0B568A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E81DFACE-2B95-4867-81C0-C3E5A0B568A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E81DFACE-2B95-4867-81C0-C3E5A0B568A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E81DFACE-2B95-4867-81C0-C3E5A0B568A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD3B740F-7BCB-4BC6-9376-A9AB95EB288D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD3B740F-7BCB-4BC6-9376-A9AB95EB288D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD3B740F-7BCB-4BC6-9376-A9AB95EB288D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD3B740F-7BCB-4BC6-9376-A9AB95EB288D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E81DFACE-2B95-4867-81C0-C3E5A0B568A7} = {6CFBAE7E-A496-4570-A6AC-CCFD44EB3538}
+		{FD3B740F-7BCB-4BC6-9376-A9AB95EB288D} = {8E4CCBA5-3DFF-447B-A540-1B79824585C8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E94CAE8-09B7-4AB3-8108-2113B1118E6E}
+	EndGlobalSection
+EndGlobal

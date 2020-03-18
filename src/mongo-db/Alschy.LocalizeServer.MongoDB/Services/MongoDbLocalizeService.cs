@@ -3,6 +3,7 @@ using Alschy.LocalizeServer.Common.Models.Utils;
 using Alschy.LocalizeServer.Common.Services;
 using Alschy.LocalizeServer.MongoDB.Configurations;
 using Alschy.LocalizeServer.MongoDB.StorageModels;
+using Alschy.LocalizeServer.Utils.Caching.Services;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -15,21 +16,27 @@ namespace Alschy.LocalizeServer.MongoDB.Services
     public class MongoDbLocalizeService : ILocalizeService
     {
         private readonly IMongoCollection<MongoDbResourceHead> collection;
-        private object indexCreationLock;
+        private readonly ILocalizeCacheProvider? cacheProvider;
 
-        public MongoDbLocalizeService(MongoDbConnectionConfiguration configuration)
+        public MongoDbLocalizeService(MongoDbConnectionConfiguration configuration, ILocalizeCacheProvider? cacheProvider = null)
         {
-            indexCreationLock = new object();
             var client = new MongoClient(configuration.MongoClientSettings);
             var db = client.GetDatabase(configuration.DbName);
             collection = db.GetCollection<MongoDbResourceHead>(configuration.CollectionName);
-            CreateIndex();
+            this.cacheProvider = cacheProvider;
         }
 
         public async Task<ResourceResponseModel> LocalizeAsync(ResourceRequestModel request, CancellationToken cancel)
         {
-            lock (indexCreationLock)
-            { }
+            if (cacheProvider != null)
+            {
+                var entry = await cacheProvider.GetCachedItemAsync(request, cancel);
+                if (entry != null)
+                {
+                    return entry;
+                }
+            }
+
             var itemCursor = await collection.FindAsync(m => m.ResourceKey == request.Key, cancellationToken: cancel);
             var item = itemCursor.FirstOrDefault();
             if (item == null)
@@ -51,7 +58,9 @@ namespace Alschy.LocalizeServer.MongoDB.Services
                 resultItem = itemCandidates.FirstOrDefault(m => m.Application != null && m.Application!.Equals(request.System, StringComparison.CurrentCultureIgnoreCase));
                 if (resultItem != null)
                 {
-                    return new ResourceResponseModel(resultItem.Value, EResolveState.System|EResolveState.CultureComplete);
+                    var result = new ResourceResponseModel(resultItem.Value, EResolveState.System|EResolveState.CultureComplete);
+                    await WriteCacheItem(request, result, cancel);
+                    return result;
                 }
                 resultItem = partCultureCandidatestes.FirstOrDefault(m => m.Application != null && m.Application!.Equals(request.System, StringComparison.CurrentCultureIgnoreCase));
                 if (resultItem != null)
@@ -63,7 +72,12 @@ namespace Alschy.LocalizeServer.MongoDB.Services
             resultItem = itemCandidates.FirstOrDefault(m => string.IsNullOrEmpty(m.Application));
             if (resultItem != null)
             {
-                return new ResourceResponseModel(resultItem.Value, EResolveState.CultureComplete);
+                var result = new ResourceResponseModel(resultItem.Value, EResolveState.CultureComplete);
+                if (request.System == null)
+                {
+                    await WriteCacheItem(request, result, cancel);
+                }
+                return result;
             }
             cancel.ThrowIfCancellationRequested();
             resultItem = partCultureCandidatestes.FirstOrDefault(m => string.IsNullOrEmpty(m.Application));
@@ -74,11 +88,11 @@ namespace Alschy.LocalizeServer.MongoDB.Services
             return new ResourceResponseModel(request.Key, EResolveState.None);
         }
 
-        private void CreateIndex()
+        private async Task WriteCacheItem(ResourceRequestModel requestModel, ResourceResponseModel responseModel, CancellationToken cancel)
         {
-            lock (indexCreationLock)
+            if (cacheProvider != null)
             {
-                collection.Indexes.CreateOneAsync(new CreateIndexModel<MongoDbResourceHead>(Builders<MongoDbResourceHead>.IndexKeys.Text(m => m.ResourceKey))).Wait();
+                await cacheProvider.WriteChacheItemAsync(requestModel, responseModel, cancel);
             }
         }
 

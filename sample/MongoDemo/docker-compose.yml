@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  mongodemo.web:
+    image: ${DOCKER_REGISTRY-}mongodemoweb
+    build:
+      context: .
+      dockerfile: MongoDemo.Web/Dockerfile
+    environment:
+     - MongoDbConnection_DbName=LOCALIZE-DB
+     - MongoDbConnection_CollectionName=DEFAULT
+     - MongoDbConnection_MongoClientSettings_Server_Host=localhost
+     - MongoDbConnection_MongoClientSettings_Server_Port=27017

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>1a18f013-277c-462a-bd06-6c1869a218f0</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\mongo-db\Alschy.LocalizeServer.MongoDB.Mangement\Alschy.LocalizeServer.MongoDB.Mangement.csproj" />
+    <ProjectReference Include="..\..\..\src\mongo-db\Alschy.LocalizeServer.MongoDB\Alschy.LocalizeServer.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\src\server-core\Alschy.LocalizeServer.Core.Management\Alschy.LocalizeServer.Core.Management.csproj" />
+    <ProjectReference Include="..\..\..\src\utils\Alschy.LocalizeServer.Utils.Caching.Memory\Alschy.LocalizeServer.Utils.Caching.Memory.csproj" />
+    <ProjectReference Include="..\..\..\src\utils\Alschy.LocalizeServer.Utils.Caching\Alschy.LocalizeServer.Utils.Caching.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Alschy.LocalizeServer.Common.Services">
+      <HintPath>..\..\..\src\common\Alschy.LocalizeServer.Common.Services\bin\Debug\netstandard2.1\Alschy.LocalizeServer.Common.Services.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+</Project>

@@ -13,6 +13,7 @@
     <ProjectReference Include="..\..\common\Alschy.LocalizeServer.Common.Models\Alschy.LocalizeServer.Common.Models.csproj" />
     <ProjectReference Include="..\..\common\Alschy.LocalizeServer.Common.Services\Alschy.LocalizeServer.Common.Services.csproj" />
     <ProjectReference Include="..\..\server-core\Alschy.LocalizeServer.Core.Models\Alschy.LocalizeServer.Core.Models.csproj" />
+    <ProjectReference Include="..\..\utils\Alschy.LocalizeServer.Utils.Caching\Alschy.LocalizeServer.Utils.Caching.csproj" />
   </ItemGroup>
 
 </Project>

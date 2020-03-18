@@ -2,12 +2,7 @@
 
 namespace Alschy.LocalizeServer.MongoDB.StorageModels
 {
-    class MongoDbResourceItem : ResourceItem
+    public class MongoDbResourceItem : ResourceItem
     {
-        public new string? Application { get; set; }
-
-        public new string? Culture { get; set; }
-
-        public new string Value { get; set; } = null!;
     }
 }
