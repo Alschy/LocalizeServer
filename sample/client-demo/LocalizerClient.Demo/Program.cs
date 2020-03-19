@@ -2,7 +2,7 @@
 using Alschy.LocalizeServer.Common.Services;
 using Alschy.LocalizeServer.Utils.Caching.Memory.Services;
 using Alschy.LocalizeServer.Utils.Caching.Services;
-using Alschy.LocalizeServer.WebClient;
+using Alschy.LocalizeServer.WebClient.Services;
 using Alschy.LocalizeServer.WebClient.Configurations;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;

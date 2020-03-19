@@ -3,6 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <nullable>enable</nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.1.0-alpha</Version>
+    <Authors>Alschy</Authors>
+    <Company />
+    <Product>Alschy.LocalizeServer</Product>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Caching abstraction layer for LocalizeServer</Description>
+    <Copyright>Alschy</Copyright>
+    <PackageProjectUrl>https://github.com/Alschy/LocalizeServer</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Alschy/LocalizeServer</RepositoryUrl>
+    <PackageTags>Net Core Standard Localization Caching</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

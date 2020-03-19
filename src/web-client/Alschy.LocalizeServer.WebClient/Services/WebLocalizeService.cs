@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Alschy.LocalizeServer.WebClient
+namespace Alschy.LocalizeServer.WebClient.Services
 {
     public class WebLocalizeService : ILocalizeService
     {

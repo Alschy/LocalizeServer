@@ -46,14 +46,21 @@ namespace Alschy.LocalizeServer.Utils.Caching.Memory.Services
             var hashAlg = MD5.Create();
             var sb = new StringBuilder();
             sb.Append(typeof(ResourceRequestModel).FullName);
-            sb.Append("!+");
+            sb.Append("!;");
             sb.Append(model.Key);
+            sb.Append("!;");
             sb.Append(model.Culture);
+            sb.Append("!;");
             sb.Append(model.System);
             var array = Encoding.ASCII.GetBytes(sb.ToString());
 
-            var hash = hashAlg.ComputeHash(array);
-            return Encoding.ASCII.GetString(hash);
+            var hashBytes = hashAlg.ComputeHash(array);
+            sb = new StringBuilder();
+            foreach (var hashByte in hashBytes)
+            {
+                sb.Append(hashByte.ToString("X2"));
+            }
+            return sb.ToString();
         }
 
     }
