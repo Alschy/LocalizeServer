@@ -22,4 +22,4 @@ jobs:
     - name: Pack nuget packages
       run: dotnet pack --configuration Release
     - name: Publish
-      run: dotnet nuget push -k {{secrets.NUGET_API_KEY}
+      run: dotnet nuget push -k {{ secrets.NUGET_API_KEY }}
