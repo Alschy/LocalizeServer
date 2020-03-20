@@ -20,8 +20,5 @@ jobs:
         source-url: https://nuget.pkg.github.com/Alschy/index.json
       env: 
         NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }} 
-    - name: Build 
-      run: dotnet build --configuration Release
-      working-directory: ./src/**/*.sln
-    - name: Publish
-      run: dotnet nuget push ./**/*.nupkg
+    - name: Build common
+      run: dotnet build --configuration Release ./src/**/*.sln
