@@ -35,4 +35,4 @@ jobs:
         # Artifact name
         name: LocalizeServer-Artifacts
         # Directory containing files to upload
-        path: /artifacts/
+        path: ./artifacts
