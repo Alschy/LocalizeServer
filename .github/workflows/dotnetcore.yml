@@ -17,9 +17,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-        source-url: https://nuget.pkg.github.com/Alschy/index.json
-      env: 
-        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }} 
     - name: Build common
       run: dotnet build --configuration Release ./src/common/*.sln
     - name: Build server-core
