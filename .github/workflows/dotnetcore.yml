@@ -27,3 +27,10 @@ jobs:
       run: dotnet build --configuration Release ./src/mongo-db/*.sln
     - name: Build web-client
       run: dotnet build --configuration Release ./src/web-client/*.sln
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: LocalizeServer-Artifacts
+        # Directory containing files to upload
+        path: /artifacts/
