@@ -22,3 +22,11 @@ jobs:
         NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }} 
     - name: Build common
       run: dotnet build --configuration Release ./src/common/*.sln
+    - name: Build server-core
+      run: dotnet build --configuration Release ./src/server-core/*.sln
+    - name: Build utils
+      run: dotnet build --configuration Release ./src/utils/*.sln
+    - name: Build mongo-db
+      run: dotnet build --configuration Release ./src/mongo-db/*.sln
+    - name: Build web-client
+      run: dotnet build --configuration Release ./src/web-client/*.sln
