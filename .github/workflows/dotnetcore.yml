@@ -29,4 +29,4 @@ jobs:
     - name: Build web client
       run: dotnet build /src/web-client --configuration Release
     - name: Publish
-      run: dotnet nuget push -k {{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push -k ${{ secrets.NUGET_API_KEY }}
