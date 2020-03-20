@@ -20,15 +20,7 @@ jobs:
         source-url: https://nuget.pkg.github.com/Alschy/index.json
       env: 
         NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }} 
-    - name: Build common
-      run: dotnet build /src/common --configuration Release
-    - name: Build core
-      run: dotnet build /src/server-core --configuration Release
-    - name: Build utils
-      run: dotnet build /src/utils --configuration Release
-    - name: Build mongo
-      run: dotnet build /src/mongo-db --configuration Release
-    - name: Build web client
-      run: dotnet build /src/web-client --configuration Release
+    - name: Build 
+      run: dotnet build /src/**/*.sln --configuration Release
     - name: Publish
       run: dotnet nuget push **/*.nupkg
