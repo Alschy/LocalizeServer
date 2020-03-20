@@ -21,4 +21,4 @@ jobs:
       env: 
         NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }} 
     - name: Build common
-      run: dotnet build --configuration Release ./src/**/*.sln
+      run: dotnet build --configuration Release ./src/common/*.sln
