@@ -17,16 +17,18 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+    - name: mkdir artifacts
+      run: mkdir ./artifacts
     - name: Build common
-      run: dotnet build --configuration Release ./src/common/*.sln
+      run: dotnet build --configuration Release -o ./artifacts ./src/common/*.sln
     - name: Build server-core
-      run: dotnet build --configuration Release ./src/server-core/*.sln
+      run: dotnet build --configuration Release -o ./artifacts ./src/server-core/*.sln
     - name: Build utils
-      run: dotnet build --configuration Release ./src/utils/*.sln
+      run: dotnet build --configuration Release -o ./artifacts ./src/utils/*.sln
     - name: Build mongo-db
-      run: dotnet build --configuration Release ./src/mongo-db/*.sln
+      run: dotnet build --configuration Release -o ./artifacts ./src/mongo-db/*.sln
     - name: Build web-client
-      run: dotnet build --configuration Release ./src/web-client/*.sln
+      run: dotnet build --configuration Release -o ./artifacts ./src/web-client/*.sln
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
