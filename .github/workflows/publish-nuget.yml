@@ -14,9 +14,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-        source-url: https://nuget.pkg.github.com/<owner>/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.NUGET_API_KEY}}
     - name: mkdir artifacts
       run: mkdir ./artifacts
     - name: Build common
@@ -29,8 +26,6 @@ jobs:
       run: dotnet build --configuration Release -o ./artifacts ./src/mongo-db/*.sln
     - name: Build web-client
       run: dotnet build --configuration Release -o ./artifacts ./src/web-client/*.sln
-    - name: Publish
-      run: dotnet nuget push ./artifacts/*.nupkg
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
@@ -38,4 +33,14 @@ jobs:
         name: LocalizeServer-Artifacts
         # Directory containing files to upload
         path: ./artifacts
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+        source-url: https://nuget.pkg.github.com/<owner>/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.NUGET_API_KEY}}
+    - name: Publish
+      run: dotnet nuget push ./artifacts/*.nupkg
 
