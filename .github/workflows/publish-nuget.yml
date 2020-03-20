@@ -3,21 +3,12 @@ name: .NET Core
 on:
   push:
     branches: [ release ]
-  pull_request:
-    branches: [ release ]
-
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v1.0.0
-      with:
-        # Artifact name
-        name: LocalizeServer-Artifacts
-        # Destination path
-        path: .artifacts
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -26,5 +17,25 @@ jobs:
         source-url: https://nuget.pkg.github.com/<owner>/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.NUGET_API_KEY}}
+    - name: mkdir artifacts
+      run: mkdir ./artifacts
+    - name: Build common
+      run: dotnet build --configuration Release -o ./artifacts ./src/common/*.sln
+    - name: Build server-core
+      run: dotnet build --configuration Release -o ./artifacts ./src/server-core/*.sln
+    - name: Build utils
+      run: dotnet build --configuration Release -o ./artifacts ./src/utils/*.sln
+    - name: Build mongo-db
+      run: dotnet build --configuration Release -o ./artifacts ./src/mongo-db/*.sln
+    - name: Build web-client
+      run: dotnet build --configuration Release -o ./artifacts ./src/web-client/*.sln
     - name: Publish
       run: dotnet nuget push ./artifacts/*.nupkg
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: LocalizeServer-Artifacts
+        # Directory containing files to upload
+        path: ./artifacts
+
