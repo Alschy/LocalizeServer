@@ -18,6 +18,8 @@ jobs:
       with:
         dotnet-version: 3.1.101
         source-url: https://nuget.pkg.github.com/Alschy/index.json
+      env: 
+        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }} 
     - name: Build common
       run: dotnet build /src/common --configuration Release
     - name: Build core
@@ -29,4 +31,4 @@ jobs:
     - name: Build web client
       run: dotnet build /src/web-client --configuration Release
     - name: Publish
-      run: dotnet nuget push -k ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push **/*.nupkg
