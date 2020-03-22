@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alschy.LocalizeServer.Common.Models", "Alschy.LocalizeServer.Common.Models\Alschy.LocalizeServer.Common.Models.csproj", "{6FADA358-692B-40BF-A3DB-378BA14642B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alschy.LocalizeServer.Common.Models", "Alschy.LocalizeServer.Common.Models\Alschy.LocalizeServer.Common.Models.csproj", "{6FADA358-692B-40BF-A3DB-378BA14642B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alschy.LocalizeServer.Common.Services", "Alschy.LocalizeServer.Common.Services\Alschy.LocalizeServer.Common.Services.csproj", "{727C35B7-192F-4ED1-9990-DC65C3A9DE7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6FADA358-692B-40BF-A3DB-378BA14642B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FADA358-692B-40BF-A3DB-378BA14642B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FADA358-692B-40BF-A3DB-378BA14642B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{727C35B7-192F-4ED1-9990-DC65C3A9DE7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{727C35B7-192F-4ED1-9990-DC65C3A9DE7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{727C35B7-192F-4ED1-9990-DC65C3A9DE7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{727C35B7-192F-4ED1-9990-DC65C3A9DE7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
