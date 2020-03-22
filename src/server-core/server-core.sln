@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alschy.LocalizeServer.Commo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alschy.LocalizeServer.Core.Models", "Alschy.LocalizeServer.Core.Models\Alschy.LocalizeServer.Core.Models.csproj", "{FE85F0E3-D3D4-4159-B6E6-6864FDF067EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alschy.LocalizeServer.Core.Abstraction", "Alschy.LocalizeServer.Core.Abstraction\Alschy.LocalizeServer.Core.Abstraction.csproj", "{19F594FB-7B9C-461A-A87B-56242B0C91BF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alschy.LocalizeServer.Common.Services", "..\common\Alschy.LocalizeServer.Common.Services\Alschy.LocalizeServer.Common.Services.csproj", "{3979250E-FBD4-4047-8E57-21EE4D6663CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alschy.LocalizeServer.Core.Management", "Alschy.LocalizeServer.Core.Management\Alschy.LocalizeServer.Core.Management.csproj", "{49ECCA82-8E08-451A-80F7-647F0B6A8E61}"
