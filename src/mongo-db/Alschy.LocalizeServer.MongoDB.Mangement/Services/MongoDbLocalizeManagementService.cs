@@ -20,7 +20,44 @@ namespace Alschy.LocalizeServer.MongoDB.Mangement.Services
             collection = db.GetCollection<MongoDbResourceHead>(configuration.CollectionName);
         }
 
-        public async Task AddResourceItemAsync(ResourceModifyRequestModel model, CancellationToken cancel)
+        public async Task DeleteResourceItem(ResourceRemoveRequestModel model, CancellationToken cancel)
+        {
+            var pointer = await collection.FindAsync(m => m.ResourceKey == model.Key);
+            var head = await pointer.FirstOrDefaultAsync();
+            bool isAnyToDo = false;
+            if (string.IsNullOrEmpty(model.Culture))
+            {
+                await collection.DeleteOneAsync(m => m.ResourceKey == model.Key);
+                return;
+            }
+            else if (string.IsNullOrEmpty(model.Application))
+            {
+                var items = head.ResourceItems.Where(m => m.Culture == model.Culture).ToList();
+                if (items.Any())
+                {
+                    foreach (var item in items)
+                    {
+                        head.ResourceItems.Remove(item);
+                    }
+                    isAnyToDo = true;
+                }
+            }
+            else
+            {
+                var item = head.ResourceItems.Where(m => m.Culture == model.Culture && m.Application == model.Application).FirstOrDefault();
+                if (item != null)
+                {
+                    head.ResourceItems.Remove(item);
+                    isAnyToDo = true;
+                }
+            }
+            if (isAnyToDo)
+            {
+                await collection.ReplaceOneAsync(m => m.ResourceKey == model.Key, head);
+            }
+        }
+
+        public async Task ModifyResourceItem(ResourceModifyRequestModel model, CancellationToken cancel)
         {
             bool addMode = false;
             var pointer = await collection.FindAsync(m => m.ResourceKey == model.Key);
@@ -41,7 +78,7 @@ namespace Alschy.LocalizeServer.MongoDB.Mangement.Services
             }
             if (addMode)
             {
-                collection.InsertOne(head);
+                await collection.InsertOneAsync(head);
             }
             else
             {

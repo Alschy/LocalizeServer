@@ -9,6 +9,8 @@ namespace Alschy.LocalizeServer.Core.Management.Services
 {
     public interface ILocalizeManagementService
     {
-        Task AddResourceItemAsync(ResourceModifyRequestModel model, CancellationToken cancel);
+        Task ModifyResourceItem(ResourceModifyRequestModel model, CancellationToken cancel);
+
+        Task DeleteResourceItem(ResourceRemoveRequestModel model, CancellationToken cancel);
     }
 }
