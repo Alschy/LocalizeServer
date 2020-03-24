@@ -40,7 +40,7 @@ namespace MongoDemo.Web.Controllers
         {
             try
             {
-                await managementService.AddResourceItemAsync(model, cancel);
+                await managementService.ModifyResourceItem(model, cancel);
                 return Ok();
             }
             catch (Exception e)
