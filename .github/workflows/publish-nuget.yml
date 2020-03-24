@@ -27,7 +27,7 @@ jobs:
     - name: Build web-client
       run: dotnet build --configuration Release -o ./artifacts ./src/web-client/*.sln
     - name: Publish
-      run: dotnet nuget push ./artifacts/**/*.nupkg -k ${{ secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols
+      run: dotnet nuget push ./artifacts/**/*.nupkg -k ${{ secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate -n
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
